@@ -34,8 +34,8 @@ export default function RegisterPage() {
           },
           onSuccess: () => {
             setLoading(false);
+            
             router.refresh();
-            router.push("/browse");
             
           },
           onError: (ctx) => {
