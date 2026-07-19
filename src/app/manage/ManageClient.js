@@ -138,7 +138,7 @@ export default function ManageClient({ user }) {
   // If in EDIT Mode
   if (editingRecipe) {
     return (
-      <div className="flex-1 bg-zinc-950 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="animate-fade-up flex-1 bg-zinc-950 px-4 py-8 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl">
           {/* Header & Back Button */}
           <div className="mb-6 flex items-center justify-between">

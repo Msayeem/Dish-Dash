@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 py-16 sm:px-6 lg:px-8">
+    <div className="animate-fade-up relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 py-16 sm:px-6 lg:px-8">
       {/* Background glow */}
       <div className="absolute top-1/3 left-1/3 -z-10 h-[300px] w-[500px] rounded-full bg-orange-500/5 blur-[100px]" />
 

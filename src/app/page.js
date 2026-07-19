@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 py-20 sm:px-6 lg:px-8">
+    <div className="animate-fade-up relative flex flex-1 flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 py-20 sm:px-6 lg:px-8">
       {/* Background radial glow */}
       <div className="absolute top-1/4 left-1/2 -z-10 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/10 blur-[120px]" />
       <div className="absolute bottom-1/4 left-1/4 -z-10 h-[300px] w-[400px] rounded-full bg-amber-500/5 blur-[100px]" />

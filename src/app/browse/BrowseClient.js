@@ -89,7 +89,7 @@ export default function BrowseClient() {
   };
 
   return (
-    <div className="flex-1 bg-zinc-950 px-4 py-8 sm:px-6 lg:px-8">
+    <div className="animate-fade-up flex-1 bg-zinc-950 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">

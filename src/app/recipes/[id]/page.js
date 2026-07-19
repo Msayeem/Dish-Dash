@@ -132,7 +132,7 @@ export default function RecipeDetailsPage({ params }) {
   }
 
   return (
-    <div className="flex-1 bg-zinc-950 pb-20">
+    <div className="flex-1 bg-zinc-950 pb-20 ">
       {/* Hero Banner Area */}
       <div className="relative h-64 sm:h-96 w-full bg-zinc-900 overflow-hidden">
         {recipe.image ? (
