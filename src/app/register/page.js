@@ -26,7 +26,7 @@ export default function RegisterPage() {
           password,
           name,
           image: image || undefined,
-          callbackURL: "/browse",
+          callbackURL: "/",
         },
         {
           onRequest: () => {
@@ -34,8 +34,8 @@ export default function RegisterPage() {
           },
           onSuccess: () => {
             setLoading(false);
-            
-            router.refresh();
+            router.push('/')
+          
             
           },
           onError: (ctx) => {

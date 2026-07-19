@@ -42,9 +42,7 @@ export default function Navbar() {
               <span className="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-500 to-yellow-400 group-hover:opacity-90 transition-opacity">
                 DishDash
               </span>
-              <span className="hidden sm:inline-block text-[10px] uppercase font-bold tracking-widest text-zinc-500 border border-zinc-800 px-1.5 py-0.5 rounded">
-                v1.0
-              </span>
+            
             </Link>
           </div>
 
