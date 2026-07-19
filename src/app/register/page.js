@@ -34,8 +34,9 @@ export default function RegisterPage() {
           },
           onSuccess: () => {
             setLoading(false);
-            router.push("/browse");
             router.refresh();
+            router.push("/browse");
+            
           },
           onError: (ctx) => {
             setError(ctx.error?.message || "Registration failed. Try again.");
