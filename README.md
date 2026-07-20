@@ -54,7 +54,7 @@ Make sure you have installed:
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/dish-dash-frontend.git
+git clone https://github.com/Msayeem/Dish-Dash.git
 ```
 
 Navigate to the project directory:
