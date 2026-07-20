@@ -2,6 +2,7 @@
 import FAQ from "@/components/Faq";
 import Features from "@/components/Features";
 import Highlights from "@/components/Highlights";
+import Newsletter from "@/components/Newsletter";
 import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
 
@@ -56,8 +57,8 @@ export default function Home() {
 
       <Features></Features>
       <Highlights></Highlights>
-      
       <Testimonials></Testimonials>
+       <Newsletter></Newsletter>
       <FAQ></FAQ>
     </div>
   );
