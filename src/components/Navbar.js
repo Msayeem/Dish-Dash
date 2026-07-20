@@ -24,6 +24,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/browse", label: "Browse Recipes" },
     { href: "/about", label: "About" },
+    { href: "/privacyTerms", label: "Privacy & Terms" },
   ];
 
   const authLinks = [
