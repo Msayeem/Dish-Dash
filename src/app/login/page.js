@@ -5,12 +5,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { authClient, signIn } from "@/lib/auth-client";
 
+// Demo account credentials - make sure this user exists in your database
+const DEMO_EMAIL = "gordon@gmail.com";
+const DEMO_PASSWORD = "1234567a";
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -45,13 +50,45 @@ export default function LoginPage() {
     }
   };
 
+  const handleDemoLogin = async () => {
+    setError("");
+    setDemoLoading(true);
+
+    // Reflect the demo credentials in the form fields too
+    setEmail(DEMO_EMAIL);
+    setPassword(DEMO_PASSWORD);
+
+    try {
+      await signIn.email(
+        {
+          email: DEMO_EMAIL,
+          password: DEMO_PASSWORD,
+          callbackURL: "/browse",
+        },
+        {
+          onSuccess: () => {
+            setDemoLoading(false);
+            router.push("/browse");
+            router.refresh();
+          },
+          onError: (ctx) => {
+            setError(ctx.error?.message || "Demo login failed. Please try again.");
+            setDemoLoading(false);
+          },
+        }
+      );
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      setDemoLoading(false);
+    }
+  };
 
   const handleGoogle = async () => {
-  await authClient.signIn.social({
-    provider: "google",
-    callbackURL: "/",
-  });
-};
+    await authClient.signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  };
 
   return (
     <div className="flex flex-1 items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-zinc-950">
@@ -71,7 +108,41 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+        {/* Demo login */}
+        <button
+          type="button"
+          onClick={handleDemoLogin}
+          disabled={demoLoading || loading}
+          className="group relative flex w-full items-center justify-center gap-2 rounded-lg border border-orange-500/30 bg-orange-500/10 py-3 text-sm font-semibold text-orange-300 hover:bg-orange-500/20 hover:border-orange-500/50 transition-all disabled:opacity-50 cursor-pointer"
+        >
+          {demoLoading ? (
+            <span className="flex items-center gap-2">
+              <svg className="h-4 w-4 animate-spin text-orange-300" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+              Signing in...
+            </span>
+          ) : (
+            <>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              Try Demo Account
+            </>
+          )}
+        </button>
+
+        <div className="relative">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-full border-t border-white/[0.08]"></div>
+          </div>
+          <div className="relative flex justify-center text-xs uppercase tracking-wider">
+            <span className="px-4 bg-zinc-900 text-slate-500 font-bold text-[10px]">Or sign in manually</span>
+          </div>
+        </div>
+
+        <form className="space-y-6" onSubmit={handleLogin}>
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-zinc-400">
@@ -111,7 +182,7 @@ export default function LoginPage() {
           <div>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || demoLoading}
               className="group relative flex w-full justify-center rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 py-3 text-sm font-semibold text-white shadow-md hover:shadow-orange-500/10 transition-all disabled:opacity-50 cursor-pointer"
             >
               {loading ? (
@@ -136,7 +207,7 @@ export default function LoginPage() {
           </Link>
         </div>
 
-  <div className="relative my-8">
+        <div className="relative my-8">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-white/[0.08]"></div>
           </div>
@@ -145,7 +216,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-   <button 
+        <button
           onClick={handleGoogle}
           type="button"
           className="w-full flex items-center justify-center gap-3 bg-white/[0.02] border border-white/[0.08] text-slate-200 hover:text-white hover:bg-white/[0.06] hover:border-white/[0.15] h-12 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm uppercase tracking-wider cursor-pointer active:scale-[0.99]"
@@ -158,7 +229,6 @@ export default function LoginPage() {
           </svg>
           Google
         </button>
-
       </div>
     </div>
   );

@@ -1,4 +1,10 @@
+
+import FAQ from "@/components/Faq";
+import Features from "@/components/Features";
+import Highlights from "@/components/Highlights";
+import Testimonials from "@/components/Testimonials";
 import Link from "next/link";
+
 
 export default function Home() {
   return (
@@ -43,39 +49,16 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Feature Highlights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 text-left">
-          <div className="rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 backdrop-blur-sm">
-            <div className="h-10 w-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 font-bold mb-4">
-              🔍
-            </div>
-            <h3 className="text-lg font-bold text-zinc-200">Explore Culinary Ideas</h3>
-            <p className="mt-2 text-sm text-zinc-400">
-              Search by title or ingredient and sort by cook time, difficulty, or servings to find the perfect dish.
-            </p>
-          </div>
 
-          <div className="rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 backdrop-blur-sm">
-            <div className="h-10 w-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 font-bold mb-4">
-              💾
-            </div>
-            <h3 className="text-lg font-bold text-zinc-200">Save Your Favorites</h3>
-            <p className="mt-2 text-sm text-zinc-400">
-              Keep your chosen culinary delights stored safely in your personal cookbook for quick access anytime.
-            </p>
-          </div>
 
-          <div className="rounded-xl border border-zinc-900 bg-zinc-900/20 p-6 backdrop-blur-sm">
-            <div className="h-10 w-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 font-bold mb-4">
-              ✍️
-            </div>
-            <h3 className="text-lg font-bold text-zinc-200">Create & Share</h3>
-            <p className="mt-2 text-sm text-zinc-400">
-              Publish your recipes for the community, complete with ingredients, instructions, category, and cook times.
-            </p>
-          </div>
-        </div>
+        
       </div>
+
+      <Features></Features>
+      <Highlights></Highlights>
+      
+      <Testimonials></Testimonials>
+      <FAQ></FAQ>
     </div>
   );
 }
